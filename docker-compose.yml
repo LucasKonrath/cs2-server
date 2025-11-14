@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  cs2:
+    image: joedwards32/cs2:latest
+    container_name: cs2-server
+    restart: unless-stopped
+    ports:
+      - "27015:27015/tcp"
+      - "27015:27015/udp"
+      - "27020:27020/udp"
+    environment:
+      # Server Configuration
+      - SRCDS_TOKEN=${SRCDS_TOKEN}
+      - CS2_SERVERNAME=${CS2_SERVERNAME}
+      - CS2_PORT=${CS2_PORT:-27015}
+      - CS2_GSLT=${SRCDS_TOKEN}
+      - CS2_PW=${CS2_PW}
+      - CS2_RCONPW=${CS2_RCONPW}
+      - CS2_LAN=${CS2_LAN:-0}
+      - CS2_MAXPLAYERS=${CS2_MAXPLAYERS:-32}
+      - CS2_GAMEALIAS=${CS2_GAMEALIAS}
+      - CS2_GAMETYPE=${CS2_GAMETYPE:-0}
+      - CS2_GAMEMODE=${CS2_GAMEMODE:-1}
+      - CS2_MAPGROUP=${CS2_MAPGROUP:-mg_active}
+      - CS2_STARTMAP=${CS2_STARTMAP:-de_dust2}
+      - CS2_BOT_DIFFICULTY=${CS2_BOT_DIFFICULTY:-1}
+      - CS2_BOT_QUOTA=${CS2_BOT_QUOTA:-0}
+      - CS2_BOT_QUOTA_MODE=${CS2_BOT_QUOTA_MODE:-normal}
+      # Additional Settings
+      - TV_ENABLE=${TV_ENABLE:-0}
+      - TV_PORT=${TV_PORT:-27020}
+      - TV_AUTORECORD=${TV_AUTORECORD:-0}
+      - TV_PW=${TV_PW}
+      - TV_RELAY_PW=${TV_RELAY_PW}
+      - TV_MAXRATE=${TV_MAXRATE:-0}
+      - TV_DELAY=${TV_DELAY:-0}
+    volumes:
+      - cs2-data:/home/steam/cs2-dedicated
+    networks:
+      - cs2-network
+
+volumes:
+  cs2-data:
+    driver: local
+
+networks:
+  cs2-network:
+    driver: bridge

@@ -1,0 +1,22 @@
+# Local development/testing files
+.env
+
+# Docker volumes
+cs2-data/
+
+# macOS
+.DS_Store
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# SSH keys
+*.pem
+*.ppk
