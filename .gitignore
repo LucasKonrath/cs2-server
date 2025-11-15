@@ -4,6 +4,10 @@
 # Docker volumes
 cs2-data/
 
+# Plugin files (downloaded by script)
+addons/
+configs/
+
 # macOS
 .DS_Store
 

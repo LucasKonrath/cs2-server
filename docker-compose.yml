@@ -37,6 +37,8 @@ services:
       - TV_DELAY=${TV_DELAY:-0}
     volumes:
       - cs2-data:/home/steam/cs2-dedicated
+      - ./addons:/home/steam/cs2-dedicated/game/csgo/addons
+      - ./configs:/home/steam/cs2-dedicated/game/csgo/cfg
     networks:
       - cs2-network
 

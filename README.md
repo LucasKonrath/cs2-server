@@ -146,6 +146,51 @@ docker-compose logs -f cs2
 
 The server will take 5-15 minutes to download and install CS2 on first launch.
 
+## Step 9: Install Quake Sounds Plugin (Optional)
+
+Add classic Quake sound effects to your CS2 server for kills, headshots, and more!
+
+```bash
+# Run the plugin installation script
+./install-plugins.sh
+
+# Restart the server to apply changes
+./manage-server.sh restart
+```
+
+This installs:
+- **CounterStrikeSharp** (CSS) - Required plugin framework
+- **Quake Sounds Plugin** - Adds Quake-style sound effects
+
+### Quake Sounds Features:
+- 🎯 Kill sounds (Impressive, Excellent, Unstoppable, etc.)
+- 💀 Headshot-specific sounds
+- 🔪 Knife kill sounds (Humiliation!)
+- 🩸 First blood announcement
+- ⚔️ Multi-kill streak sounds
+- 🏆 Round start/end sounds
+
+### Customize Sounds:
+
+Edit the configuration file:
+```bash
+nano addons/counterstrikesharp/configs/plugins/QuakeSounds/QuakeSounds.json
+```
+
+Enable/disable sounds and adjust volumes:
+```json
+{
+  "KillSound": true,
+  "HeadshotKillSound": true,
+  "KnifeKillSound": true,
+  "FirstKillSound": true,
+  "KillSoundVolume": 0.5,
+  "HeadshotKillSoundVolume": 0.5
+}
+```
+
+After editing, restart: `./manage-server.sh restart`
+
 ## Server Management Commands
 
 ```bash
@@ -213,6 +258,12 @@ Or use an RCON tool like:
 - Enable gp3 SSD with higher IOPS
 - Check network latency
 
+### Plugins not working
+- Ensure you ran `./install-plugins.sh`
+- Check that the server restarted after plugin installation
+- Verify files exist in `addons/counterstrikesharp/plugins/`
+- Check logs: `docker-compose logs cs2 | grep -i "counterstrike"`
+
 ## Cost Estimation (São Paulo Region)
 
 - **t3.xlarge:** ~$0.1664/hour (~$120/month)
@@ -247,6 +298,8 @@ Edit `CS2_STARTMAP` in `.env` to change the starting map.
 ## Additional Resources
 
 - [joedwards32/CS2 Docker Image](https://github.com/joedwards32/CS2)
+- [CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp) - Plugin framework
+- [Quake Sounds Plugin](https://github.com/NockyCZ/CS2-QuakeSounds)
 - [CS2 Server Commands](https://developer.valvesoftware.com/wiki/List_of_CS2_console_commands_and_variables)
 - [AWS EC2 Pricing](https://aws.amazon.com/ec2/pricing/)
 

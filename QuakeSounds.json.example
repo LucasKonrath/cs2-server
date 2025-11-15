@@ -1,0 +1,23 @@
+# Quake Sounds Configuration
+# This file will be created automatically when you run ./install-plugins.sh
+# Location: addons/counterstrikesharp/configs/plugins/QuakeSounds/QuakeSounds.json
+
+{
+  "KillSound": true,
+  "HeadshotKillSound": true,
+  "KnifeKillSound": true,
+  "FirstKillSound": true,
+  "RoundStartSound": false,
+  "LastPlayerSound": false,
+  "WinSound": false,
+  "LoseSound": false,
+  "KillSoundVolume": 0.5,
+  "HeadshotKillSoundVolume": 0.5,
+  "KnifeKillSoundVolume": 0.5,
+  "FirstKillSoundVolume": 0.5,
+  "RoundStartSoundVolume": 0.5,
+  "LastPlayerSoundVolume": 0.5,
+  "WinSoundVolume": 0.5,
+  "LoseSoundVolume": 0.5,
+  "ConfigVersion": 2
+}
